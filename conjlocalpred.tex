@@ -1,0 +1,69 @@
+\section{Efficient Distributed Detection of Conjunctions of Local Predicates \\ \small{ Michel Hurfin, Masaaki Mizuno, Michel Raynal, Mukesh Sighal}}
+
+\subsection{Notes}
+
+The collapastion of internal events, ie the job done by the key-value store in
+\dinv is refered to here as an interval. More precisely "the \textit{x}'th
+interval of proces $P_i$ denoted by $\theta_i^x$ is a segment of the
+computation that begins at event $e^x_i$ and ends at $e^{x+1}_i$. This
+definiation may be usefull in describing the usage of the key value store, and
+this citation, along with \todo{\textit{on the fly analysis} \& \textit{shared
+global state} and others $\dots$ would be usefull. Thanks Raynal}
+
+In early \dinv I defined a total ordering on cuts. Although I never ended up
+using it becuase it was too course grain the same dependency is defined here.
+Formally: A dependency relation denoted by $\rightsquigarrow$ is defined over
+the set of all consistent cuts as follows. Let 
+
+$C^x$ = $\theta^{x_1}_1, \theta^{x_2}_2, \dots , \theta^{x_p}_p$ 
+and 
+$C^y$ = $\theta^{y_1}_1, \theta^{y_2}_2, \dots , \theta^{y_p}_p$ 
+be two consistent cuts, then: 
+$C^x \rightsquigarrow C^y \iff (C^x \neq C^y) \wedge (\forall k, 1 \leq k \leq p , x_k \leq y_k)$ 
+
+This algorithm is very technical, but somewhat similar to \dinv. Essentailly it
+aims to show that at some point in relative time a conjunction of local
+predicates held. The algorithm involves two vector clocks and a boolean vector
+denoting predicate satisfiability of on a process. 
+
+I think the algorithm goes like this.  If a predicate is true, set $P_i$ to
+true. If you get a message with $P_j$ = true update the predicate array. Mark
+the current vector time, and keep track of the first point in time the
+predicate was denoted true. If $\theta$ becomes false set all incomming and
+outgoing predicate messages to false. The predicate becomes true if there is a
+causal path across all processes such that $\forall i \theta_i = true$. It is
+not super complicated, the hard part is really just that it is done on the fly.
+
+I think that this algorithm is a bit pessamistic, using a lattice I think that
+these predicates could be detected more easily.
+
+\subsection{Observations} 
+
+This work is very specific. It aims to detect global predicates online, with
+significant computational overhead. I think that the key takeaway from the
+algorithm is the technique for detecting causal intervals online. Essentially
+taint tracking and merging across multiple processes to show that some property
+$\theta$ is satsified globally.
+
+This work seeks to show that a given predicate is recognized globally and does not have any interaction with a state machine. Could this online technique be used as an atom to verify sequences in in computation, and allow for decentralized distributed computation? For instance would it be possible to encode a bunch of tasks, and have a single process issues a continue message once the task is complete? If the satisfaction of a given task is monotonic then I believe that the answer is yes.
+
+\subsection{Questions}
+
+\begin{itemize}
+
+    \item Could this technique be used to easily distribute SAT solving? my
+inital instinct is no, because there is no obvious way to do back propagation.
+
+    \item Is this applied anywhere? For instance this could be used to show
+something like termination in Hadoop withought a specified leader. With that
+stated it would be a bit of overkill.
+
+    \item could this be used to simplify termination in graph processing? Is
+this this a more robust solution to predicate dection than the
+\textit{White/Black} graph coloring that pregal uses.
+
+    \item Is there a recovery mechanism for satisfied predicates? It seems like
+in the worst case only a single process will learn that the predicate is
+satisfied.
+
+\end{itemize}

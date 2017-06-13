@@ -1,0 +1,96 @@
+\section{Specification and verification of Dynamic Properties in Distributed Systems \\ \small\textit{Ozalp Babaoglu and Micheal Raynal ISIRA rennes}}
+
+\subsection{Notes} interesting point early on that any number of events may be
+"irrelevent with respect to a given property" so their model simply ignores
+all that are not relevent. In the future consider providing a feild or
+annotation in a messaging block, (such as govector) which would allow the
+isolation of messages which pertained to a given property. This would allow
+for a higher degeree of fidelity. In addition it may be possible to associate
+messages with a given functionality based on their structure.
+
+\noindent\textbf{run} a total order of events in a distributed system. This is what really hapend, but is unobservable due to clock skew, and an absent centralized clock.
+
+Exampes of predicates which cannot be satisfied by a simple boolean predicate $A \vee B \wedge C$ where $A$, $B$, $C$ are variables.
+
+\begin{itemize}
+    \item Load ain the network is blaances.
+    \item Resource allocation violates the \"at most k-out-of -n\" concurrent access requirement
+    \item Message delay alone the route for A to B is less than 5ms
+    \item No more than 100 total users logged in to tmachines A, B, and C
+    \item In the computation of Fig 1 $x >= 2y$.
+\end{itemize}
+
+\noindent\textbf{sequence spec is an ordered array of simple predicates $SS ::= SP | SS; SP$}
+
+Interval controlled sequences are a key component to realizing temporal
+predicates esentially the process is as follows. An obervation is a set of
+states $\Sigma$ on which a property can hold. A mentioned in the prior section
+$SS ::= SP | SS; SP$ is a sequence of simple properties which hold over subsets
+of an observation. Temporal properties can be constructed by linking
+predicates. In the form $\phi;[\bar{\Theta}];\phi$ where all such phi are
+observations on which a predicate holds.
+
+$\phi_1;[\theta];\phi$ is satisfied by an observation if there exists a global
+state $\Sigma^1$ in which $\phi_1$ holds, a late global state $\Sigma^2$ in
+which $\phi_2$ holds, and $\Theta$ does not hold in the global states in
+between. Denoted in the form $\phi_1;[\bar{\Theta}]\phi_2$.
+
+This paper makes the contribution of formualting temporal strings of if
+\textit{interval-constraied sequest} with the synyax
+$\bar{[\Theta_1]}\phi_1;\dots;\bar{[\Theta_m]}\phi_m;\bar{[\Theta_{m+1}]}$
+
+Key takeaway from the formulation. The difference between SS and ICS is that
+between states $i_n,i_{n+1}$ there exists a $\bar{[\theta_n]}$ which must not
+hold on that interval. In that way the expressivness of ICS is greater than
+that of SS.
+
+Two algorithms are proposed for solving SS \textbf{Pos} and \textbf{Def}. To
+compute Def all paths through an observation are taken and must show that the
+$SS$ formula holds. In constrast $SS$ \textbf{Pos} is verified simply by
+finding a single example in an observation on which the formula holds.
+
+\subsection{Take Away}
+
+This paper presented a novel formulation for describing temporal properties in
+distributed executions. It is very similar to \dinv in that it uses a latice to
+formulate an execution. However, where \dinv prunes the search space by
+examining only strongly consistant cuts, this approach dives in deeper, and
+actually traverses all possible interleavings in order to satisfy a predicate.
+
+If \dinv were to take this approach it would require that a user specify their
+invariants ahead of time, if not then all possible observations of a run would
+need to be fed into Daikon.
+
+Of specific interest is their formulation of $\bar{[\theta]}\phi$ in that it
+requirs some invariant to not hold before a know property in a given state.
+Using \dinv's ground states this same technique could still be applied,
+although it would be equally restricted by ground states. However, this could
+still be a potential extension.
+
+The clear problem with mining invariants using this technique is that it is a
+search, therfore any attempt to infer invariants would result in inferring on
+the entire search space.
+
+This approach does not take into account failures, it could also be interesting
+to extend the expressivness of the formula to accept failures and restarts. The
+hardest part in this would be modifing $\Sigma$ to accept "Global" predicates
+on a subset of nodes. Further it would be interesting to see if predicates
+could be defined which allows for the recovery of a node, by a new one
+introduced to the system.
+
+Overall this is just a scheme for temporal logic detection in a system
+instrumentd with vector clocks. It could be used for that golden key value spec
+$\forall get(x) \leftarrow put(x) get(x) == get(x)$ untill $put(x')$. This would have been a cool path to go down if it had not allready been done.
+
+\subsection{Questions}
+
+\begin{itemize}
+    \item Is there a way to divide temporal search paths for mining?
+    \item Is there a way to identifiy identical search paths and merge them for compression?
+       \item Is there an obvious or non obvious way to trim a search path, or limit the lenght of a search for temporal invariant mining?
+       \item Can Search Paths be presented to daikon in a way which preserves temporal logic?
+\end{itemize}
+
+
+
+

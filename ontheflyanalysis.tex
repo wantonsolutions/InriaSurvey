@@ -1,0 +1,23 @@
+\section{On-the-fly analysis of distributed computations \\
+\small{Eddy Fromentin, Claude Jard, Guy-Vincent Jourdan, Michel Raynal}}
+
+\subsection{Overview}
+
+This paper proposed a method for checking properties of distributed
+computations during exectuon. The Idea is a bit suble, and very general. Given
+a standard model of a distrubuted systems ie $P_0 \dots P_n$ processand with
+events $e_0 \dots e_m$ apply to each event a work or subset of an alphabet
+$\Sigma$. As control flow passes through events on different machines check the
+current alphabet againts a specified automata or regular expression. If an
+event fails to correlate with the regular expression then it has not met the
+specification and fails. Otherwize the letters of the event are appended to the
+message, and upon the next event it is checked againts the regex again.
+
+There is a little bit in the beginning about simplifing a distributed execution
+down to an LPO. The graph (Figure 1b) does not make a lot of sense. It seems to
+trim out long messages, and only be concerned with the longest message path
+through the execution. It was not totally clear to me why this would be used,
+but I guess the idea is that newer messages have some sort of precident, and
+can invalidate old messages??
+
+

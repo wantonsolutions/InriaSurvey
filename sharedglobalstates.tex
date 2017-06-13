@@ -1,0 +1,62 @@
+\section{Shared Global states in Distrubted Computations \\ \small{Eddy
+Fromentin, Michel Raynal}}
+
+\subsection{Notes}
+
+The paper begins with the same notation used in prior papers defining partial order and such. The key part of the paper is \textit{shared global states}, which are an element in the lattice of global states such that 
+
+Let $\Sigma = (s_1,\dots,s_i,\dots,s_n) be a global state$ \\
+$\Sigma is shared \iff $\\
+
+$\forall (i,j)$ :: (prev($s_i$) $\rightarrow$ next($s_j$) \textit{or} $s_j =
+s_j^{last} or s_i = s_i^0$)
+
+Essentially a shared global state is a state which has the entire global
+history as its transitive predisessor, or at least all of the history it could
+known about transitivly.
+
+The algorithm near the end of the paper shows how shared global state can be
+detected on the fly, however the algorithm is centralized with diminishes how
+interesting it is. That stated, shared global state is near conceptually with
+common knowledge, in that it is the nth degree of eveyone knows everything, it
+is the case that someone knows everything~\cite{Halpern:1990:KCK:79147.79161}.
+
+\subsection{Observations}
+
+While is is kind of cool that the idea of \textit{Shared Global States} has
+been formalized here, there is a big want with reguard to purpose. Specifically
+when would you want to use shared global state. I can only think of Chain
+Replication.~\cite{vanRenesse:2004:CRS:1251254.1251261}. While shared global
+state is not a central tenant of the system it would acheive it quite often
+during execution.
+
+With reguard to Dinv this is almost certanly not the path to go down, SCC are
+allready too much of a restriction as they do no even consider the world of
+\textit{observations}. With that said GSS could be an interestin root at which
+to perform some sort of analysis. It serves as an obvious break point.
+
+If I wanted to infer arbetrary temporal properties on a distributed execution I
+could for instance make users provide a template, search for observations from
+GSS roots, enumerate them in a key value store, overlay matching or equivalent
+states (there would be few, but some may match the template.
+
+This is probably not the way to go either, the size of the output would be
+gigantic, just note that \textbf{GSS can be used for roots of computation} as
+they are as close to common knowledge as you are ever going to get (and it can
+be done on the fly)
+
+\subsection{Questions}
+
+\begin{itemize}
+
+\item Is shared global state sufficient to coordinate locks? If not what
+information is required to allow for locking?
+
+\item How frequently do these happen in practice, for example in etcd? If the
+answer is kind of frequently there may be some interesting work to be done.
+
+\end{itemize}
+
+
+
+

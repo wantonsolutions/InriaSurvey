@@ -1,0 +1,48 @@
+\section{On the Fly Testing of Regular Patterns in Distributed Computations \\
+\small{Eddy Fromentin, Michel Raynal Vijay k Garg, Alex Tomlinson}}
+
+\subsection{Notes}
+
+This work aim to detect regular patterns in the exectuion of distrubted
+systems. The first technique to note is that they reduced a distributed
+execution down to only events corresponding to msg receves and sends. This is
+the same intuition I had when initially building GoVector, and insturmenting
+systems for \dinv but it is done formally.
+
+Their technique relies on labling events with a symbol in an execution
+language. Series of events form automata which are describable by regualr
+expressions. Not sure where this paper is going, but I assume that they are
+going to describe a partially orded regex syntax.
+
+This paper did not go much further, the algorithm for performing on the fly
+regular expressions is relativly simple. Essentally every process maintains an
+array of the regular expression. The expression nessisarily begins at the
+beginning of the computation, with omits much of the complexity incurred in the
+\textit{specification and verification of dynamic properties in distributed
+computation} paper. Each process maintains a boolean array of the properties in
+the regex. When a new event occurs locally the process checks if it violates
+the regex. Otherwise two seperate cases occur. 1) a sent message is received or
+a local event happens, merge the two and check if they violate any of the regex
+conditions. On a send event just treat it as a local event. In addition to
+vector clocks the array of regular experession must be added to messages.
+
+\subsection{Observations}
+
+I think that regular expressions on states are interesting, but ultimatly not
+going to play into my work. These models could be usefull for specifing
+something like TCP where the execution is known to be finite, or should be. In
+typical system cases though I believe that specifications need to be more
+expressive than regular expersions. For instance Coq and TLA+ the key
+languages in specification are fully fledged programming languages.
+
+What this work does contribute is an online way to process regex. I think that
+this is usefull for a couple of reasons 1) I think that it could be key in
+generalizing some well known protocols such as leader election, where the set
+of known messages would fit in the vocabulary of events.
+
+I should do a bit of follow up on this work to see if anyone built a tool which
+automatically translates regex into protocols rather than check a protocol with
+regex, but I don't think that it would yeild interesting work.
+
+
+

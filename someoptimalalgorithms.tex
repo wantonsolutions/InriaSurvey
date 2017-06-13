@@ -1,0 +1,36 @@
+\section{Some Optimal Algorithms for Decomposed Partially Ordered Sets \
+\small{ Vijay K. Garag}}
+
+\subsection{Notes}
+
+I'm reading this one as both an introduction to Garag and as a bit of a break
+from the proof heavy papers.
+
+This paper allready seems like it is going to be a good resource, it has an
+algorithm for detecting consistant cuts $n^2m$ time $\dots$ if this is really
+the case, it may be possible just cut the crap on dinv and really speed it up.
+
+
+As usual my hopes are dashed this is an early algorithm which only detects a
+single consistant cut, not all of them like I had wanted. However, the online
+variant may be useful for making \dinv a streaming service at some point.
+
+The second algorithm in this paper checks if a set of given antichains compose
+are constrained by a total ordering. The algorithm does so in $O(mn log n)$
+time. Essentially it continuously merges sets of antichains untill it finds
+aconflits where some set of antichains has events / elements $s$ and $t$ such
+that $s || t $. It is a very nice algorithm, but given that \dinv never
+encounters total orderings I don't think that it will come in handy.
+
+\subsection{Observations}
+
+The online detection of consistant cuts could be used as a fron end for dinv
+easily, but the cost of checking all consistant cuts is still exponential.
+
+\subsection{Questions}
+
+\begin{itemize}
+
+\item What is the purpose of finding largest antichains? Potentially it shows that the largest number of chains which can be composed is $n$ but it is still not clear where this would be applied. Is this to show the complexity during distributed debuggin?
+
+\end{itemize}

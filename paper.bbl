@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{Halpern:1990:KCK:79147.79161}
+J.~Y. Halpern and Y.~Moses.
+\newblock Knowledge and common knowledge in a distributed environment.
+\newblock {\em J. ACM}, 37(3):549--587, July 1990.
+
+\bibitem{vanRenesse:2004:CRS:1251254.1251261}
+R.~van Renesse and F.~B. Schneider.
+\newblock Chain replication for supporting high throughput and availability.
+\newblock In {\em Proceedings of the 6th Conference on Symposium on Opearting
+  Systems Design \& Implementation - Volume 6}, OSDI'04, pages 7--7, Berkeley,
+  CA, USA, 2004. USENIX Association.
+
+\end{thebibliography}

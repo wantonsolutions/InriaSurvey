@@ -1,0 +1,53 @@
+\section{Detecting Atomic Sequences of Predicates in Distributed Computations, 1993 \\ 
+\small{Hichel Hurfin, Noel Plouzeau, Micheal Raynal}}
+
+\subsection{Notes}
+
+The goal of this paper is to detect sequences of atomic properties. I assume
+that these would be something similar to the detection of distributed mutual
+exclusion. The key inisght that was presented in the abstract is that these
+properties on not monotonic. Perhaps this means that atomic properties may hold
+on the \textbf{POS} predicate? I'm not sure because for the sake of guarentted
+atomicity \textbf{DEF} seems to be a nessisary constraint.
+
+Key note, the definition of "Atomicity" in the case of this paper is a sequence
+of events, of which none violate a specific preperty ie $CA = \neg NP_1 \wedge
+NP_2 \wedge \dots \wedge NP_n$. Where each $NP_i$ denots the property on a
+select processes.
+
+The real purpose of this paper is to count the number of causal paths which
+satisfy a prefix of the form $do_0;[don't_0] do_1; [don't_1] \dots do_n$. This
+differs from the specifing systems paper a little bit, essentially in the way
+that they are counting the number of occurances.
+
+\subsection{Observations}
+
+An anti observation is, what is the purpose of this algorithm. It seems to be a
+gneralization of the specification language, defined in Specification and
+Verification of dynamic properties, but it is simply a counting function. I
+suppose that the interesting bit comes from handing cases were predicates are
+invalidated due to being non-atomic however, it was unclear to me why a counter
+of these properties was wanted and not simply a flag.
+
+This algorithm is extreamly clean. It would be interesting to see if it could
+be extended to define a generalized decentralized computation framework similar
+to Dryad but with a decentralized compute. Essentially all computations would
+be defined as a set of predicates and antipredices, for instance, compute a
+property on some large graph, and dont compute where any other node has.
+Instances of conflict could be counted and reset. Individual functions could be
+specified in this way, and entire programs could be written as a heirarchy of
+predicates, and loops defined on them. Figuring out how to work in conditionals
+would be a problem onto itself.
+
+\subsection{Questions}
+
+\begin{itemize}
+    
+    \item What common distributed debugging tasks actually require counts of invariant violations.
+
+    \item Is it reasonable to define atomic predicates, with the execption of locking?
+
+    \item Can this be leveraged in reverse, and turned into a control mechanism, rather than a checking algorithm.
+
+\end{itemize}
+
