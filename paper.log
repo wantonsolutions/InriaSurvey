@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.1.14)  13 JUN 2017 16:16
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.1.14)  16 JUN 2017 09:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -313,7 +313,11 @@ Package: wasysym 2003/10/30 v2.0 Wasy-2 symbol support package
 \symwasy=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
 (Font)                  U/wasy/m/n --> U/wasy/b/n on input line 90.
-)) (./paper.aux)
+)) (./paper.aux
+
+LaTeX Warning: Label `fig:espace' multiply defined.
+
+)
 \openout1 = `paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
@@ -330,8 +334,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
 LaTeX Font Info:    ... okay on input line 120.
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 120.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -502,35 +505,79 @@ Overfull \hbox (5.0pt too wide) in paragraph at lines 40--41
 [][] 
  []
 
-) (./paper.bbl) [6 <./fig/espace.jpg>] (./paper.aux) ) 
+) (./autosync.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--2
+[]\OT1/ptm/b/n/14.4 AutoSynch: An Automatic-
+ []
+
+
+Underfull \hbox (badness 2111) in paragraph at lines 39--43
+\OT1/ptm/m/n/10 Local pred-i-cates can be eval-u-ated by treat-ing their
+ []
+
+
+Underfull \hbox (badness 1838) in paragraph at lines 39--43
+\OT1/ptm/m/n/10 run-time val-ues as con-stant. The mo-ment that the
+ []
+
+
+Underfull \hbox (badness 1668) in paragraph at lines 39--43
+\OT1/ptm/m/it/10 AutoSynch.WaitUntill($\OML/cmm/m/it/10 P$\OT1/ptm/m/it/10 ) \O
+T1/ptm/m/n/10 is ex-e-cuted and $\OML/cmm/m/it/10 P$ \OT1/ptm/m/n/10 con-tains
+ []
+
+<fig/predicatelock.jpg, id=35, 3276.24pt x 2457.18pt>
+File: fig/predicatelock.jpg Graphic file (type jpg)
+
+<use fig/predicatelock.jpg>
+Package pdftex.def Info: fig/predicatelock.jpg used on input line 51.
+(pdftex.def)             Requested size: 234.8775pt x 176.14445pt.
+
+Overfull \hbox (5.0pt too wide) in paragraph at lines 51--52
+[][] 
+ []
+
+
+Underfull \hbox (badness 1057) in paragraph at lines 63--68
+\OT1/ptm/m/n/10 the ex-pec-tion was that locks would last a long
+ []
+
+[6 <./fig/espace.jpg>]) (./paper.bbl)
+Overfull \vbox (2.11725pt too high) has occurred while \output is active []
+
+
+[7 <./fig/predicatelock.jpg>] (./paper.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 7276 strings out of 493304
- 104444 string characters out of 6139871
- 200857 words of memory out of 5000000
- 10553 multiletter control sequences out of 15000+600000
+ 7285 strings out of 493304
+ 104632 string characters out of 6139871
+ 200899 words of memory out of 5000000
+ 10558 multiletter control sequences out of 15000+600000
  33477 words of font info for 80 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  38i,9n,40p,663b,264s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf
--dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-i9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
-utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (6 pages, 1666368 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
+mr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (7 pages, 3510314 bytes).
 PDF statistics:
- 89 PDF objects out of 1000 (max. 8388607)
- 63 compressed objects within 1 object stream
+ 95 PDF objects out of 1000 (max. 8388607)
+ 67 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

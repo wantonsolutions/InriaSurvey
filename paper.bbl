@@ -1,5 +1,12 @@
 \begin{thebibliography}{1}
 
+\bibitem{Burrows:2006:CLS:1298455.1298487}
+M.~Burrows.
+\newblock The chubby lock service for loosely-coupled distributed systems.
+\newblock In {\em Proceedings of the 7th Symposium on Operating Systems Design
+  and Implementation}, OSDI '06, pages 335--350, Berkeley, CA, USA, 2006.
+  USENIX Association.
+
 \bibitem{Halpern:1990:KCK:79147.79161}
 J.~Y. Halpern and Y.~Moses.
 \newblock Knowledge and common knowledge in a distributed environment.
