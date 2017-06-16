@@ -2,14 +2,17 @@
 
 \subsection{notes}
 
-From the intro and problem definition this paper is of little interest to me. The authors state that there should be more research into the feild of deadlocks in networks with lossless messages.
+From the intro and problem definition this paper is of little interest to me.
+The authors state that there should be more research into the feild of
+deadlocks in networks with lossless messages.
 
 Their reson is that RoCE requires lossless communication channels, these
 channels use pauses to mittigate traffic and prevent overflow. If there is a
 cycle a deadlock can occur. They cite ~\cite{rdma-commodity-ethernet-scale},
 from andys class, where deadlocks occured because of some gap in ARP updates.
 
-While this is true you really have to buy into RDMA, and believe that lossless channels are a real thing.
+While this is true you really have to buy into RDMA, and believe that lossless
+channels are a real thing.
 
 The key takeaway here is the formula $r > r_d = \frac{nB}{TTL}$ which
 essentially sates that if the incomming amount of data is larger than what is
@@ -18,4 +21,25 @@ mittigated by the $TTL$ of any given packet.
 
 \subsection{observations}
 
+The problem of FIFO lossess channel deadlock has not been solved aperently.
+After a cursory reading this may acually be a use case for smarter routers.
+Potentially ones that could implement RoCE lossless protocols and pass markers
+along channes as part of a header to prevent deadlocks.
+
 \subsection{questions}
+
+\begin{itemize}
+
+\item Is this deadlock formulation a real problem? The calculation I would like
+to see is how often do these CBD occur, and when they do, how long does it take
+to reset? If that number is higher then the overhead introduced by any sort of
+deadlock detection algorithm, then the algorithm is unnessisary in a production
+enviornment.
+
+\item Are any of these observations corrorborated by datacenters? They only
+supply one reference
+
+\item What would the overhead be of using a smart switch to detect deadlocks?
+Would it nullify the boost of RDMA?
+
+\end{itemize}

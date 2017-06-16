@@ -1,0 +1,38 @@
+\section{Incremental, Iterative Data Processing with Timely Dataflow \\ \small{ P Derek G. Murray, Frank McSherry, Micheal Isard, Rebecca Isaacs, Paul Barham, Martin Abadi}}
+
+\subsection{notes}
+
+This is a simplified version of the Naiad paper, but it is for public
+consumption so perhaps it will be a good read none the less. It will also be
+good to catch up on Naiad.
+
+This paper was a bit of a waste of time to read, as it covered the details of
+Naiad in less detail than the original paper.
+
+Timely data flow is the key contribution to this work, although it was allready
+presented in Naiad. The Idea is that distributed dataflow can be modeled as a
+dataflow graph and itterations are possible by timestamping events, and using
+partial ordering to determine if events are ready for processing.
+
+One key advantage of Naiad is that it does not rely on the \textit{"think like
+a vertex"} model of distributed computing. More robust algorithms are possible,
+but are more complicated to implement than in a framework such as Pregal.
+
+\subsection{observations}
+
+\subsection{questions}
+
+\begin{itemize}
+
+\item Is Naiad the be all end all, what is needed to make distributed dataflow
+more expresive? Is that extra expressiveness nessisary?
+
+\item How bad is scheduling in Naiad in the worst case? Where does this
+framework perform poorly.
+
+
+\end{itemize}
+
+
+
+

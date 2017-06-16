@@ -7,6 +7,11 @@ M.~Burrows.
   and Implementation}, OSDI '06, pages 335--350, Berkeley, CA, USA, 2006.
   USENIX Association.
 
+\bibitem{rdma-commodity-ethernet-scale}
+C.~Guo and J.~Padhye.
+\newblock Rdma over commodity ethernet at scale.
+\newblock ACM, August 2016.
+
 \bibitem{Halpern:1990:KCK:79147.79161}
 J.~Y. Halpern and Y.~Moses.
 \newblock Knowledge and common knowledge in a distributed environment.

@@ -1,0 +1,57 @@
+\section{Design patterns for container-based distributed systems \\ \small{Brendan Burns, David Oppenhimer}}
+
+\subsection{notes}
+
+The first substantial claim of this paper is that containers are essentiall the
+object's of distributed computing. My instinct is to disagree because they all
+take the same form and are shaped from the inside rather than the outside. For
+instance it is expensive and uncommon to wrap a container in another container.
+But perhaps that is a short sighted statement.
+
+The authors aruge that contains should be embued with a similar API to Android
+Apps, ie \textit{run(), pause(), stop()} are insufficient, and additional
+callback functions such as \textit{onCreate(), onStart(), onStop()} would be
+usefull.
+
+As a whole I do not really agree with the sentement of this work. Containers
+are simply not the same as objects as they do not conform, nor could they
+easily conform to the heirarcies which are applied to objects and which make
+them powerful, such as inheritance, encapulation and polymorphism. 
+
+What they present here is work partitioning. They treat containers as libraries
+not as objects, which I do agree with. What this paper should acknowledge is
+that Containers are like library code which has a front facing api.
+
+In most of there examples they simply put a container in between two pieces of
+existing infrastructure to isolate the developemnt of custom software.
+
+\subsection{observations}
+
+At it's core, it seems correct that containers should be used as building
+blocks for systems, at least for the sake of simplicity. What is not mentioned
+here is performance, which is clearly not a concern of the authors
+
+What would be interesting in my opinion would be a flexable container where
+oversubscription is delt with automatically and configurations change on the
+fly to meet with demand. It would be very interesting to see if an ecosystem
+such as naiad would allow for dynamic allocation of new resources on the fly.
+
+The key patterns here are \textit{sidecar}: a app that works off  to the side
+to perform background tasks, like backups or analytics. \textit{ambassador /
+proxy} a container that sits between an app and the real network.
+\textit{interface}: Sits between a legacy system and a new app. \textit{Work
+queue}: By far the most interesting, here we have complicated tasks like leader
+election, being taken over by a containerized solution.
+
+
+\subsection{questions}
+
+\begin{itemize}
+
+\item Are there techniques for automatically scaling the deployment of
+containerized applications? (Yes there are for example \textit{Elastic stateful Stream processing in Storm}
+
+\item What is the overhead of using these patterns? Is there a significant
+slowdown by placing an interface between one system and another.
+
+\end{itemize}

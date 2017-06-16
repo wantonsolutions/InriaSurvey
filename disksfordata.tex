@@ -1,0 +1,57 @@
+\section{Disks for Data Centers \\ \small{Eric Brewer, Lawrence Ying, Lawrence
+Greenfield, Robert Cypher, Theodore Ts'o}}
+
+\subsection{notes}
+
+This has nothing to do with anything really but it probably has some roots with
+dataflow problems, and keeping data moving, so I'm going to read it.
+
+The authors point out that disks for data centers do not require the same low
+error rate that comodidy PC's require. This is due to the fact that all data
+center data is nessisarily replicated globally. Reconstructing damaged data is
+easy, so faster disks with higher capacity would be a boon at the loss of
+accuracy.
+
+A common practice for disk IO in a data center is to query many disks, and
+return the value of the fastest read. Other reads are cancelled. The objective
+to try and hit a cache, and gain minimal latency.
+
+An interesting point by the authors is the want to allow disks to opperate
+after head failures. They state that they can work around such failures, and it
+would increase the lifespan of the disk. This is how you know you are working
+at real scale.
+
+\subsection{observations}
+
+The authors of this paper really make one single point. Data centers want finer
+grain control over disks. To rationalize this they use the end-to-end principle
+as a basis. Essentially they are allready mannaging their own data, and have
+very specific use cases for the disk, so many of the optimizations applied by
+disk manufactures simply to not apply to them.
+
+As stated above, the future of data center disks may be tall stacked, small
+platters with inreliable IO.
+
+Disk API's are a key concern for google practitoners. A potentially interesting
+endevor would be to spec out an API for the modern disk, ie rather than flush
+commands something like stream(start,finish,rate) would allow for per quality
+streaming at a dedicated rate, while allowing for other types of IO to occur
+concurently.
+
+Another may be WriteBig(x, size) where a large portion of a disk is written
+sequentailly in a part of the disk which can be sequentally read.
+
+\subsection{questions}
+
+\begin{itemize}
+
+\item Are the projections of this paper true? Will disks remain relvent for the
+next decade or will Flash take over. If disks are relevent, then for how long?
+
+\item Do these companies actually know what they want? Dispite the apperant
+knowledge of disks (at least to the point of their weak points and performance,
+are companies such as Google, Facebook, and Amazon really ready to build all of
+their systems for custom disks? The extra control may prove to cause larger
+errors then they are ready for.
+
+\end{itemize}
